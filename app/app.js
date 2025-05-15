@@ -2,12 +2,20 @@ const form = document.querySelector("#userData");
 const userNameInput =document.querySelector("#userNameInput")
 
 form.addEventListener("submit",(e)=>{
+
+    const fullName = userNameInput.value.trim();
+    const firstName = fullName.split(" ")[0];
+
+    alert('hello ' + firstName);
+    const lastName = fullName.split(" ")[1]?.toLowerCase();
+    if(lastName &&lastName.includes("arjmand")){
+    alert("party bazi (;")
+    }
    
 const userInfo ={
-    userName:
+    userFullName:
     document.querySelector("#userNameInput").value,
-    lastName:
-    document.querySelector("#lastNameInput").value,
+
     Email:
     document.querySelector("#emailInput").value,
     Age:
@@ -32,40 +40,50 @@ const userInfo ={
     document.querySelector("#marital").value,
 
 }
+
 console.log(userInfo)
 
 e.preventDefault()
 
 })
 
+
+
 userNameInput.addEventListener("blur",(e)=>{
+
+    let value = String(e.target.value);
+    if(/\d/.test(value)){
+        alert("cant use number in this input")
+    }
     console.log(e)
     if(e.target.value.length <3 ){
-    alert("invalid")
+    alert("invalid Name")
     }
 })
 
-lastNameInput.addEventListener("blur",(e)=>{
+
+ageInput.addEventListener("blur",(e)=>{
     console.log(e)
-    if(e.target.value.length <3 ){
-    alert("invalid lastname")
+    if (parseInt(e.target.value)<18)
+        alert("kocholooooo")
+})
+
+Bearthday.addEventListener("blur",(e)=>{
+    const birthdate = new Date (e.target.value);
+    const cutoffdate= new Date ("2003-01-01")
+    if (birthdate>=cutoffdate){
+        alert("your age is not appropriate")
+        // اگه با سن برابر نبود سوال یادم نره
     }
 })
+
 
 fatherName.addEventListener("blur",(e)=>{
     console.log(e)
     if(e.target.value.length <3 ){
-    alert("invalid lastname")
+    alert("invalid Name")
     }
 })
-
-ageInput.addEventListener("blur",(e)=>{
-    console.log(e)
-    if(parseInt(e.target.value) <20){
-    alert("too young")
-    }
-})
-
 
 workExperience.addEventListener("blur",(e)=>{
     console.log(e)
